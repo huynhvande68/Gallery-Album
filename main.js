@@ -35,7 +35,6 @@ const imageUrls = [
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/24295e01-0df3-4c0c-b63d-4c0994ef7c41_p8qpyp.jpg",
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/945dd891-a5b3-490b-8401-623f069f5d9f_kabgzl.jpg",
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/3672a79f-ad9c-48d4-b00c-3ca5ab84258c_ltjifi.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/823d06c0-ac1e-40e1-abe0-47860dd21054_q19lw1.jpg",
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/4d5f6f11-4abc-400f-9185-ea8c437573c1_a9w52n.jpg",
   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/526f3677-1ce3-47af-8ab2-ed0a26782531_p8romd.jpg",

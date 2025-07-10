@@ -136,7 +136,7 @@ if (window.innerWidth <= 768) {
     largeHeight: 500,
     itemGap: 65,
     hoverScale: 1.05,
-    expandedScale: 0.9,
+    expandedScale: 0.4,
     dragEase: 0.075,
     momentumFactor: 200,
     bufferZone: 3,

@@ -21,6 +21,7 @@
   padding: 0;
   box-sizing: border-box;
   user-select: none;
+  font-family: "TheGoodMonolith", monospace;
 }
 
 body {
@@ -184,7 +185,15 @@ h3 {
 }
 
 /* Header and Footer */
-.header,
+.header{
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  padding: 1.5rem;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between; /* 👈 tách hai bên */
+}
 .footer {
   position: absolute;
   left: 0;
@@ -224,7 +233,8 @@ h3 {
 }
 
 .social-section {
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-right: 0%;
   grid-column: 11 / span 2;
   text-align: right;
 }

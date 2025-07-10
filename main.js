@@ -24,7 +24,7 @@ const items = [
   "Thu li lom",
   "Thu yeu long",
   "@Le thu",
-  "Thu oiii",
+  "Thu iu",
   "Love Thu"
 ];
 // Image URLs - replace with your actual image URLs

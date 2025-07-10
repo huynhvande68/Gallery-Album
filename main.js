@@ -1,6 +1,8 @@
 import { Pane } from "https://cdn.skypack.dev/tweakpane@4.0.4";
 window.Pane = Pane;
 
+
+
 // Register GSAP plugins
 gsap.registerPlugin(CustomEase);
 CustomEase.create("hop", "0.9, 0, 0.1, 1");
@@ -28,36 +30,71 @@ const items = [
   "Love Thu"
 ];
 // Image URLs - replace with your actual image URLs
-const imageUrls = [
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/ce7e90fb-9089-46f6-9a8a-20a44e6fad81_uxt057.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/d71ea2f5-26e1-4355-9949-a35dc19b4b02_llv9gy.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/24295e01-0df3-4c0c-b63d-4c0994ef7c41_p8qpyp.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/945dd891-a5b3-490b-8401-623f069f5d9f_kabgzl.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/3672a79f-ad9c-48d4-b00c-3ca5ab84258c_ltjifi.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/4d5f6f11-4abc-400f-9185-ea8c437573c1_a9w52n.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/526f3677-1ce3-47af-8ab2-ed0a26782531_p8romd.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
-  "https://res.cloudinary.com/duzwezuug/image/upload/v1752071908/4ad0cf79-c5c8-474a-9a89-5521a7c4e824_bzxt5q.jpg",
-];
 // const imageUrls = [
-//   "https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg",
-//   "https://images.pexels.com/photos/1213447/pexels-photo-1213447.jpeg",
-//   "https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg",
-//   "https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg",
-//   "https://images.pexels.com/photos/1379640/pexels-photo-1379640.jpeg",
-//   "https://images.pexels.com/photos/1485894/pexels-photo-1485894.jpeg",
-//   "https://images.pexels.com/photos/50594/sea-bay-waterfront-beach-50594.jpeg",
-//   "https://images.pexels.com/photos/1172675/pexels-photo-1172675.jpeg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/ce7e90fb-9089-46f6-9a8a-20a44e6fad81_uxt057.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/d71ea2f5-26e1-4355-9949-a35dc19b4b02_llv9gy.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/24295e01-0df3-4c0c-b63d-4c0994ef7c41_p8qpyp.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/945dd891-a5b3-490b-8401-623f069f5d9f_kabgzl.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/3672a79f-ad9c-48d4-b00c-3ca5ab84258c_ltjifi.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/4d5f6f11-4abc-400f-9185-ea8c437573c1_a9w52n.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/526f3677-1ce3-47af-8ab2-ed0a26782531_p8romd.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
+  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071908/4ad0cf79-c5c8-474a-9a89-5521a7c4e824_bzxt5q.jpg",
 // ];
 
+//Biến global để lưu imageUrls
+let imageUrls = [];
+
+// Function load images từ Google Drive
+async function loadImagesFromGoogleDrive() {
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbzuiv0BFCsMEm32Y_tgtBa4_-YaiZOBk3ijXcwq0EtKtT8GZsceCg9IJ1HdIKFT9othLw/exec';
+  
+  try {
+    const response = await fetch(scriptUrl);
+    const result = await response.json();
+    
+    if (result.success) {
+      // Chuyển đổi các URL từ dạng uc => thumbnail
+      imageUrls = result.data.map(url => {
+        const match = url.match(/id=([^&]+)/); // Tách ID từ URL
+        if (match && match[1]) {
+          const fileId = match[1];
+          return `https://drive.google.com/thumbnail?id=${fileId}&sz=s0`;
+        }
+        return url; // fallback nếu không match
+      });
+
+      console.log('Loaded thumbnails:', imageUrls);
+      return imageUrls;
+    } else {
+      console.error('Error from script:', result.error);
+      // fallback URLs
+      imageUrls = [
+        "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
+        // ...
+      ];
+      return imageUrls;
+    }
+  } catch (error) {
+    console.error('Error loading images:', error);
+    imageUrls = [
+      "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
+      // ...
+    ];
+    return imageUrls;
+  }
+}
+
+loadImagesFromGoogleDrive()
 
 const container = document.querySelector(".container");
 const canvas = document.getElementById("canvas");
 const overlay = document.getElementById("overlay");
 const projectTitleElement = document.querySelector(".project-title p");
+
+
 // Settings object for Tweakpane
 // const settings = {
 //   // Item sizes

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Nguyen Anh Thu</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- 1) Nhúng GSAP core trước -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <!-- 2) Nhúng plugin CustomEase -->
+  <script src="https://unpkg.com/gsap@3/dist/CustomEase.min.js"></script>
+  <script src="https://unpkg.com/split-type"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+  <body>
+    <div class="header">
+    <div class="nav-section">
+      <div class="logo-container">
+        <div class="logo-circles">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+          <!-- <img style="width: 50px; height: 50px;" src="https://img.icons8.com/?size=100&id=83rjvdidpfyJ&format=png&color=000000" alt=""> -->
+
+        </div>
+        
+      </div>
+        Le Nguyen Anh Thu <img style="width: 22px; height: 22px; margin-left: 10px;" src="https://img.icons8.com/?size=100&id=83rjvdidpfyJ&format=png&color=000000" alt="">
+    </div>
+
+    <div class="social-section">
+      <h3>My Social Network ↴</h3>
+      <ul>
+        <li><a href="https://instagram.com/filipz__">Instagram <i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="https://x.com/filipz">Facebook <i class="fa-brands fa-square-facebook"></i></a></li>
+        <li><a href="https://x.com/filipz">Tiktok <i class="fa-brands fa-tiktok"></i></a></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="coordinates-section">
+      <p>34.0522° N, 118.2437° W</p>
+    </div>
+    <div class="links-section">
+      <p>Press <span class="key-hint">H</span> to toggle panel</p>
+    </div>
+    <div class="info-section">
+      <p>Est. 2025 • Summer Days</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="canvas" id="canvas"></div>
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <div class="project-title">
+    <p></p>
+  </div>
+
+  <!-- Page vignette effects -->
+  <div class="page-vignette-container">
+    <div class="page-vignette"></div>
+    <div class="page-vignette-strong"></div>
+    <div class="page-vignette-extreme"></div>
+  </div>
+  </body>
+  
+  <script type="module" src="./main.js"></script>
+</html>

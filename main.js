@@ -83,28 +83,72 @@ const projectTitleElement = document.querySelector(".project-title p");
 //   zoomDuration: 0.6 // Reduced from 1.0 to 0.6 for faster zoom
 // };
 
-const settings = {
-  // Item sizes
-  baseWidth: 260,
-  smallHeight: 290,
-  largeHeight: 340,
-  itemGap: 20,
-  hoverScale: 1.05,
-  expandedScale: 0.4, // Percentage of viewport width
-  dragEase: 0.075,
-  momentumFactor: 200,
-  bufferZone: 3,
-  borderRadius: 8,
-  vignetteSize: 5,
-  // Page vignette settings - simplified to two main controls
-  vignetteStrength: 0.8, // Controls opacity of all layers
-  vignetteSize: 30, // Controls size of all layers
-  // Overlay settings
-  overlayOpacity: 0.7,
-  overlayEaseDuration: 0.5,
-  // Animation durations
-  zoomDuration: 0.5 // Reduced from 1.0 to 0.6 for faster zoom
-};
+// const settings = {
+//   // Item sizes
+//   baseWidth: 260,
+//   smallHeight: 290,
+//   largeHeight: 340,
+//   itemGap: 20,
+//   hoverScale: 1.05,
+//   expandedScale: 0.4, // Percentage of viewport width
+//   dragEase: 0.075,
+//   momentumFactor: 200,
+//   bufferZone: 3,
+//   borderRadius: 8,
+//   vignetteSize: 5,
+//   // Page vignette settings - simplified to two main controls
+//   vignetteStrength: 0.8, // Controls opacity of all layers
+//   vignetteSize: 30, // Controls size of all layers
+//   // Overlay settings
+//   overlayOpacity: 0.7,
+//   overlayEaseDuration: 0.5,
+//   // Animation durations
+//   zoomDuration: 0.5 // Reduced from 1.0 to 0.6 for faster zoom
+// };
+
+let settings = {};
+
+if (window.innerWidth <= 768) {
+  // Mobile settings
+  settings = {
+    baseWidth: 260,
+    smallHeight: 290,
+    largeHeight: 340,
+    itemGap: 20,
+    hoverScale: 1.05,
+    expandedScale: 0.8,
+    dragEase: 0.075,
+    momentumFactor: 200,
+    bufferZone: 3,
+    borderRadius: 8,
+    vignetteSize: 5,
+    vignetteStrength: 0.8,
+    vignetteSize: 30,
+    overlayOpacity: 0.7,
+    overlayEaseDuration: 0.5,
+    zoomDuration: 0.5
+  };
+} else {
+  // Desktop settings
+  settings = {
+    baseWidth: 400,
+    smallHeight: 330,
+    largeHeight: 500,
+    itemGap: 65,
+    hoverScale: 1.05,
+    expandedScale: 0.9,
+    dragEase: 0.075,
+    momentumFactor: 200,
+    bufferZone: 3,
+    borderRadius: 8,
+    vignetteSize: 5,
+    vignetteStrength: 0.8,
+    vignetteSize: 200,
+    overlayOpacity: 0.9,
+    overlayEaseDuration: 0.8,
+    zoomDuration: 0.6
+  };
+}
 // Define item sizes based on settings
 let itemSizes = [
   {

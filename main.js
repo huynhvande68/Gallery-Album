@@ -24,7 +24,7 @@ const items = [
   "Thu dang ghet",
   "Thu kho chieu",
   "Thu li lom",
-  "Bé dế cute",
+  "Be de cute",
   "@Le thu",
   "Thu iu",
   "Love Thu"

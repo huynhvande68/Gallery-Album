@@ -31,17 +31,17 @@ const items = [
 ];
 // Image URLs - replace with your actual image URLs
 // const imageUrls = [
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/ce7e90fb-9089-46f6-9a8a-20a44e6fad81_uxt057.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/d71ea2f5-26e1-4355-9949-a35dc19b4b02_llv9gy.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/24295e01-0df3-4c0c-b63d-4c0994ef7c41_p8qpyp.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/945dd891-a5b3-490b-8401-623f069f5d9f_kabgzl.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/3672a79f-ad9c-48d4-b00c-3ca5ab84258c_ltjifi.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/4d5f6f11-4abc-400f-9185-ea8c437573c1_a9w52n.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/526f3677-1ce3-47af-8ab2-ed0a26782531_p8romd.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
-  // "https://res.cloudinary.com/duzwezuug/image/upload/v1752071908/4ad0cf79-c5c8-474a-9a89-5521a7c4e824_bzxt5q.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/ce7e90fb-9089-46f6-9a8a-20a44e6fad81_uxt057.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/d71ea2f5-26e1-4355-9949-a35dc19b4b02_llv9gy.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/24295e01-0df3-4c0c-b63d-4c0994ef7c41_p8qpyp.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071910/945dd891-a5b3-490b-8401-623f069f5d9f_kabgzl.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/3672a79f-ad9c-48d4-b00c-3ca5ab84258c_ltjifi.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071933/f2371870-9d86-4c8a-b35e-39ca7723b282_lv3ohw.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/4d5f6f11-4abc-400f-9185-ea8c437573c1_a9w52n.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/526f3677-1ce3-47af-8ab2-ed0a26782531_p8romd.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071909/164a3c32-d969-4f98-9cd6-08e80855ff7a_txldh8.jpg",
+//   "https://res.cloudinary.com/duzwezuug/image/upload/v1752071908/4ad0cf79-c5c8-474a-9a89-5521a7c4e824_bzxt5q.jpg",
 // ];
 
 //Biến global để lưu imageUrls
@@ -57,7 +57,7 @@ async function loadImagesFromGoogleDrive() {
     
     if (result.success) {
       // Chuyển đổi các URL từ dạng uc => thumbnail
-      imageUrls = result.data.map(url => {
+      imageUrls = result.data.slice(0, 10).map(url => {
         const match = url.match(/id=([^&]+)/); // Tách ID từ URL
         if (match && match[1]) {
           const fileId = match[1];
@@ -87,7 +87,6 @@ async function loadImagesFromGoogleDrive() {
   }
 }
 
-loadImagesFromGoogleDrive()
 
 const container = document.querySelector(".container");
 const canvas = document.getElementById("canvas");
@@ -929,12 +928,12 @@ function animate() {
     const distMoved = Math.sqrt(
       Math.pow(currentX - lastX, 2) + Math.pow(currentY - lastY, 2)
     );
-    if (distMoved > 100 || now - lastUpdateTime > 120) {
-      updateVisibleItems();
-      lastX = currentX;
-      lastY = currentY;
-      lastUpdateTime = now;
-    }
+    // if (distMoved > 100 || now - lastUpdateTime > 120) {
+    //   updateVisibleItems();
+    //   lastX = currentX;
+    //   lastY = currentY;
+    //   lastUpdateTime = now;
+    // }
   }
   requestAnimationFrame(animate);
 }
@@ -1016,7 +1015,7 @@ window.addEventListener("resize", () => {
       ease: "power2.out"
     });
   } else {
-    updateVisibleItems();
+    // updateVisibleItems();
   }
 });
 // Add this right before the // Initialize comment
@@ -1028,7 +1027,15 @@ function initializeStyles() {
 }
 // Initialize
 initializeStyles();
-updateVisibleItems();
+// Đảm bảo chỉ render sau khi ảnh từ Google Drive được load
+loadImagesFromGoogleDrive().then(() => {
+  if (imageUrls.length > 0) {
+    updateVisibleItems(); // chỉ render khi ảnh đã sẵn sàng
+    animate(); // chỉ nên gọi animate sau khi có ảnh (nếu cần)
+  } else {
+    console.error("Không có ảnh nào để hiển thị!");
+  }
+});
 animate();
 // Initialize Tweakpane after a short delay to ensure DOM is ready
-setTimeout(initTweakpane, 500);
+setTimeout(initTweakpane, 5000);
